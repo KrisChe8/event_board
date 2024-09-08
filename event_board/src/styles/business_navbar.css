@@ -16,3 +16,10 @@
   cursor: pointer;
   color: #fff;
 }
+
+.sign-out {
+  background-color: #212024;
+  color: #fff;
+  margin-left: 25px;
+  cursor: pointer;
+}

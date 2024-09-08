@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Business_api_events from "./Business_api_events";
 import Business_corporate from "./Business_corporate";
 import Business_create from "./Business_create";
 import Business_myevents from "./Business_myevents";
@@ -7,6 +8,7 @@ import Business_navbar from "./Business_navbar";
 import Update_event from "./Update_event";
 
 function Business_home() {
+  const size_show = 16;
   // GET CURRENT USER
   const active_user = "kris.dev.888@gmail.com";
   return (
@@ -23,6 +25,7 @@ function Business_home() {
         {/* <Link to="/business/myevents/:id"> Update My Events</Link> */}
 
         <Routes>
+          <Route path="/" element={<Business_api_events size={size_show} />} />
           <Route path="/corporate" element={<Business_corporate />} />
           <Route path="/create" element={<Business_create />} />
           <Route

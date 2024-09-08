@@ -73,11 +73,9 @@ function Business_create() {
     }
     if (data) {
       setFormError(null);
-      console.log(data);
+
       navigate("/business/corporate");
     }
-    // console.log(eventName, eventDescription, eventPrice);
-    // console.log(eventEnd.format(), eventStart.format());
   };
 
   return (

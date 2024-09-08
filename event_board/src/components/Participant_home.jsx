@@ -1,26 +1,28 @@
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Events_navbar from "./Events_navbar";
 import Participant_corporate from "./Participant_corporate";
+import Participant_events_manager from "./Participant_events_manager";
 import Participant_mytickets from "./Participant_mytickets";
+import Participant_navbar from "./Participant_navbar";
 
 function Participant_home() {
+  // GET FROM LOGED IN
+  const active_user = "kris.dev.888@gmail.com";
   return (
     <div className="screen-wrapper">
-      <h1>Participant Home</h1>
-      <Link to="/participant"> Home Participant</Link>
-      <Link to="/participant/corporate"> Participant Corporate</Link>
-      <Link to="/participant/mytickets"> Participant My Tickets</Link>
+      <Participant_navbar />
+      <h1 className="app-title">
+        From Sharing to Participating - The Event Journey Begins Here!
+      </h1>
 
-      {/* <Routes>
+      <Routes>
+        <Route path="/home/*" element={<Participant_events_manager />} />
         <Route
-          path="/participant/corporate"
-          element={<Participant_corporate />}
+          path="/mytickets"
+          element={<Participant_mytickets user={active_user} />}
         />
-        <Route
-          path="/participant/mytickets"
-          element={<Participant_mytickets />}
-        />
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

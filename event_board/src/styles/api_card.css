@@ -1,0 +1,55 @@
+.events-api-wrapper {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.api-card-wrapper {
+  width: 450px;
+  height: 460px;
+
+  border-radius: 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.api-card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: fill;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.api-card-details {
+  display: flex;
+  justify-content: space-between;
+}
+.event-link {
+  text-decoration: none;
+  margin-top: 20px;
+  color: #000;
+  text-align: center;
+  font-style: italic;
+}
+.api-card-details,
+.event-link {
+  padding: 20px 15px;
+}
+.addto-calendar-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #15d154;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3;
+}
+.addto-calendar-btn:hover {
+  text-shadow: 0 0 15px #fff, 0 0 30px #49ff18,
+    4px -12px 4px rgba(154, 206, 76, 0);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  /* text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, */
+  /* 0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18; */
+}

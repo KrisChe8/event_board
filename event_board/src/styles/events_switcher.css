@@ -1,0 +1,19 @@
+.events-switcher-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.events-switcher-wrapper a {
+  text-decoration: none;
+  background-color: #139c13;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}

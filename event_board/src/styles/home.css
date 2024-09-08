@@ -1,0 +1,86 @@
+.home-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: 3rem;
+  margin-bottom: 2.7rem;
+}
+.main-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: #212024;
+  padding: 15px;
+  color: #fff;
+}
+.company-logo {
+  width: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.sign-form-wrapper {
+  max-width: 90%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.login-card {
+  position: relative;
+  width: 43%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.img-login-card {
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.title-sign-in {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.sign-in-description {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.sign-in {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 60%;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #d2e3fc;
+  color: #a50e0e;
+  position: absolute;
+  bottom: 10px;
+  left: 20%;
+}
+.g-icon {
+  width: 15px;
+}
+.events-block-title {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 18px;
+  font-weight: 500;
+}

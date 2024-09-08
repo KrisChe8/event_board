@@ -4,7 +4,11 @@ function Business_navbar() {
   return (
     <nav className="navbar business-navbar">
       <div className="logo">
-        <h2>LOGO</h2>
+        <img
+          className="company-logo"
+          src="/around-the-world.png"
+          alt="Company logo"
+        />
       </div>
       <div className="menu">
         <Link className="menu-item" to="/business">
@@ -23,6 +27,7 @@ function Business_navbar() {
           {" "}
           Business My Events
         </Link>
+        <button className="sign-out">Sign out</button>
       </div>
       <div className="userlogged">Username</div>
     </nav>

@@ -23,15 +23,15 @@ function App() {
         <Route path="/business/myevents" element={<Business_myevents />} />
         <Route path="/business/myevents/:id" element={<Update_event />} /> */}
 
-        <Route path="/participant/" element={<Participant_home />} />
-        <Route
+        <Route path="/participant/*" element={<Participant_home />} />
+        {/* <Route
           path="/participant/corporate"
           element={<Participant_corporate />}
         />
         <Route
           path="/participant/mytickets"
           element={<Participant_mytickets />}
-        />
+        /> */}
         <Route path="/notfound" element={<Error_page />} />
       </Routes>
     </>
