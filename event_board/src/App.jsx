@@ -34,7 +34,8 @@ function App() {
       provider: "google",
       options: {
         scopes: "https://www.googleapis.com/auth/calendar",
-        redirectTo: "http://localhost:5187/participant/home/corporate",
+        redirectTo:
+          "https://event-board-psi.vercel.app/participant/home/corporate",
       },
     });
 
@@ -49,7 +50,7 @@ function App() {
       provider: "google",
       options: {
         scopes: "https://www.googleapis.com/auth/calendar",
-        redirectTo: "http://localhost:5187/business/",
+        redirectTo: "https://event-board-psi.vercel.app/business/",
       },
     });
 
