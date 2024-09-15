@@ -38,6 +38,9 @@ function App() {
           "https://event-board-psi.vercel.app/participant/home/corporate",
       },
     });
+    if (window.location.hash.includes("access-token")) {
+      window.history.replaceState(null, null, window.location.pathname);
+    }
 
     if (error) {
       alert("Error logging in to Google provider with Supabase");
@@ -53,7 +56,9 @@ function App() {
         redirectTo: "https://event-board-psi.vercel.app/business/",
       },
     });
-
+    if (window.location.hash.includes("access-token")) {
+      window.history.replaceState(null, null, window.location.pathname);
+    }
     if (error) {
       alert("Error logging in to Google provider with Supabase");
       console.log(error);
