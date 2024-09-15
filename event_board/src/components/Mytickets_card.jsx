@@ -1,25 +1,82 @@
-function Mytickets_card({ event, user }) {
-  return (
-    <div className="event-card-wrapper">
-      <img className="card-img" src={event.img_url} alt={event.event_name} />
+import { useState } from "react";
 
-      <h3 className="card-title">{event.event_name}</h3>
-      <p className="description-card">{event.event_description}</p>
-      <div className="card-details">
-        <p className="card-date">Date: {event.date} </p>
-        <p className="card-date">Time: {event.time}</p>
-      </div>
-      {/* {user === event.created_by ? (
-        <div className="nav-buttons">
-          <Link to={"/business/myevents/" + event.id}>
-            <span className="material-symbols-outlined">edit</span>
-          </Link>
-          <span className="material-symbols-outlined" onClick={handleDelete}>
-            delete
-          </span>
+function Mytickets_card({ event, user }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const date = event.date.split("-");
+  const dmy = date.reverse().join("-");
+  const timeArr = event.time.split(":");
+  const time = `${timeArr[0]}:${timeArr[1]}`;
+  console.log(event);
+  return (
+    <>
+      {showModal ? (
+        <>
+          <div className="modal-window">
+            <div className="modal-card-wrapper">
+              <div className="modal-img-wrapper">
+                <img
+                  className="modal-card-img"
+                  src={event.img_url}
+                  alt={event.event_name}
+                />
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="modal-close"
+                >
+                  X
+                </button>
+              </div>
+              <h3 className="modal-card-title">{event.event_name}</h3>
+              <div className="modal-time-details">
+                <div className="modal-icons-wrapper">
+                  <img
+                    className="modal-icons-img"
+                    src="/number-1.png"
+                    alt="calendar"
+                  />
+                  <p>
+                    {" "}
+                    <span className="modal-bold">Date:</span> {dmy}{" "}
+                  </p>
+                </div>
+                <div className="modal-icons-wrapper">
+                  {" "}
+                  <img
+                    className="modal-icons-img"
+                    src="/clock.png"
+                    alt="time icon"
+                  />
+                  <p>
+                    {" "}
+                    <span className="modal-bold">Time:</span> {time}{" "}
+                  </p>
+                </div>
+              </div>
+
+              <p className="modal-description">{event.event_description}</p>
+            </div>
+          </div>
+        </>
+      ) : null}
+      <div className="event-card-wrapper event-card-wrapper-mytickets">
+        <img
+          className="my-tickets-card-img"
+          src={event.img_url}
+          alt={event.event_name}
+        />
+        <h3 className="mytickets-card-title" onClick={() => setShowModal(true)}>
+          {event.event_name}
+        </h3>
+        <p className="description-card description-card-mytickets">
+          {event.event_description}
+        </p>
+        <div className="card-details">
+          <p className="card-date">Date: {dmy} </p>
+          <p className="card-date">Time: {time}</p>
         </div>
-      ) : null} */}
-    </div>
+      </div>
+    </>
   );
 }
 

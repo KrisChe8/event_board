@@ -1,6 +1,7 @@
 .events-switcher-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 70px;
   width: 98%;
   align-items: center;
   padding-left: 10%;
@@ -16,4 +17,40 @@
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 0.4s;
+}
+
+.events-switcher-wrapper a:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+@media screen and (max-width: 540px) {
+  .events-switcher-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .events-switcher-wrapper a {
+    font-size: 14px;
+    background-color: #212024;
+  }
+}
+@media screen and (max-width: 400px) {
+  .events-switcher-wrapper {
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .events-switcher-wrapper a {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 300px) {
+  .events-switcher-wrapper a {
+    width: 130px;
+    padding: 6px 18px;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
 }

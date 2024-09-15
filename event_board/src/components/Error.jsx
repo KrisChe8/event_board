@@ -1,7 +1,7 @@
 function Error_page() {
   return (
     <>
-      <h1>Page does not exist</h1>
+      <img src="/404-error.jpg" alt="page not found" className="error-img" />
     </>
   );
 }

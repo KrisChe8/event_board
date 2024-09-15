@@ -1,0 +1,119 @@
+.navigation-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.navigation-wrapper-mytickets {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.toggle-wrapper button {
+  margin-right: 0px;
+  background-color: #139c13;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 0.4s;
+}
+.toggle-wrapper button:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.mytickets-card-title {
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.description-card {
+  overflow: scroll;
+}
+.description-card-mytickets {
+  max-height: 130px;
+}
+
+@media screen and (max-width: 870px) {
+  .event-card-wrapper-mytickets {
+    height: 440px;
+  }
+  .description-card-mytickets {
+    max-height: 117px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .event-card-wrapper-mytickets {
+    width: 310px;
+  }
+  .my-tickets-card-img {
+    height: 180px;
+  }
+}
+@media screen and (max-width: 695px) {
+  .toggle-wrapper button {
+    font-size: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navigation-wrapper-mytickets {
+    flex-wrap: wrap;
+  }
+  .order-by-mytickets {
+    font-size: 13px;
+  }
+  .order-by-mytickets button {
+    background-color: #212024;
+  }
+}
+@media screen and (max-width: 670px) {
+  .event-card-wrapper-mytickets,
+  .past-events-wrapper > .event-card-wrapper {
+    width: 290px;
+    height: 400px;
+  }
+  .my-tickets-card-img {
+    height: 150px;
+  }
+  .description-card-mytickets {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .past-events-wrapper {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .past-events-wrapper > .event-card-wrapper {
+    width: 290px;
+    height: 400px;
+  }
+  .navigation-wrapper-mytickets {
+    gap: 20px;
+    justify-content: center;
+  }
+  .order-by-mytickets button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mytickets-card-title {
+    font-size: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .event-card-wrapper-mytickets,
+  .past-events-wrapper > .event-card-wrapper {
+    height: auto;
+  }
+}
+@media screen and (max-width: 435px) {
+  #page-title-mytickets {
+    font-size: 16px;
+    margin-top: 1rem;
+  }
+  .orderby-title-mytickets {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+}

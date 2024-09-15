@@ -7,6 +7,7 @@ function Business_myevents({ user }) {
   const [events, setEvents] = useState(null);
   const [orderBy, setOrderBy] = useState("created_at");
   const [asc, setAsc] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleDeleteUiExp = (id) => {
     setEvents((prev) => {
@@ -15,6 +16,7 @@ function Business_myevents({ user }) {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchEvents = async () => {
       const { data, error } = await supabase
         .from("corporate_events")
@@ -26,10 +28,12 @@ function Business_myevents({ user }) {
         setFetchError("There are no events yet!");
         setEvents(null);
         console.log(error);
+        setIsLoading(false);
       }
       if (data) {
         setEvents(data);
         setFetchError(null);
+        setIsLoading(false);
       }
     };
     fetchEvents();
@@ -68,6 +72,7 @@ function Business_myevents({ user }) {
             </button>
           </div>
           <div className="events-wrapper">
+            {isLoading ? <p className="isLoading">Loading...</p> : null}
             {events.map((event) => (
               <EventCard
                 key={event.id}

@@ -8,6 +8,7 @@
 .main-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 60px;
   width: 100%;
   background-color: #212024;
@@ -83,4 +84,161 @@
   margin-top: 80px;
   font-size: 18px;
   font-weight: 500;
+}
+@media screen and (max-width: 870px) {
+  .sign-in {
+    width: 70%;
+    left: 15%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .title-sign-in {
+    font-size: 16px;
+  }
+  .sign-in-description {
+    font-size: 15px;
+    text-align: center;
+  }
+  .login-card {
+    height: 420px;
+  }
+}
+@media screen and (max-width: 745px) {
+  .sign-in {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 715px) {
+  .sign-in {
+    width: 80%;
+    left: 10%;
+    padding: 12px;
+  }
+}
+@media screen and (max-width: 625px) {
+  .img-login-card {
+    height: 160px;
+  }
+  .sign-in-description {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .login-card {
+    height: 380px;
+  }
+  .home-title {
+    font-size: 22px;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 570px) {
+  .sign-form-wrapper {
+    max-width: 94%;
+    gap: 30px;
+  }
+  .title-sign-in {
+    font-size: 15px;
+  }
+  .img-login-card {
+    height: 140px;
+  }
+  .sign-in-description {
+    font-size: 13px;
+  }
+  .sign-in {
+    width: 90%;
+    left: 5%;
+  }
+  .login-card {
+    height: 360px;
+  }
+  .home-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .main-header-slogan {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .sign-form-wrapper {
+    flex-direction: column;
+  }
+  .login-card {
+    width: 86%;
+    height: 230px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .img-login-card {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 130px;
+    border-top-right-radius: 0;
+  }
+  .title-sign-in {
+    grid-column: 2 / span 3;
+    grid-row: 1;
+  }
+  .sign-in-description {
+    grid-column: 2 / span 3;
+    grid-row: 2;
+    margin-top: 0;
+  }
+  .api-card-wrapper {
+    height: auto;
+  }
+}
+@media screen and (max-width: 465px) {
+  .home-title {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .home-title {
+    font-size: 17px;
+  }
+  .img-login-card {
+    height: 120px;
+  }
+  .login-card {
+    height: 220px;
+  }
+}
+@media screen and (max-width: 465px) {
+  .home-title {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .main-header {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .company-logo {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  .login-card {
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 200px;
+  }
+  .img-login-card {
+    display: none;
+  }
+  .title-sign-in {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+  .sign-in-description {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    margin-top: 0;
+  }
 }

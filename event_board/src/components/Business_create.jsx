@@ -8,7 +8,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-function Business_create() {
+function Business_create({ useremail }) {
   const navigate = useNavigate();
 
   const [eventName, setEventName] = useState("");
@@ -19,10 +19,11 @@ function Business_create() {
   const [imgUrl, setImgUrl] = useState("");
   const [speakers, setSpeakers] = useState("");
   const [formError, setFormError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   //   console.log(eventStart.format());
   // TO BE CHANGED FOR LOGIN DETAILS
-  const createdBy = "kris.dev.888@gmail.com";
+  const createdBy = useremail;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +52,7 @@ function Business_create() {
 
     const start = eventStart.format();
     const end = eventEnd.format();
+    setIsLoading(true);
     const { data, error } = await supabase
       .from("corporate_events")
       .insert([
@@ -68,10 +70,12 @@ function Business_create() {
       .select();
 
     if (error) {
+      setIsLoading(false);
       console.log(error);
       setFormError("Please fill in all the fields correctly");
     }
     if (data) {
+      setIsLoading(false);
       setFormError(null);
 
       navigate("/business/corporate");
@@ -81,6 +85,7 @@ function Business_create() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="screen-wrapper">
+        {isLoading ? <p className="isLoading">Saving...</p> : null}
         <div className="form-wrapper">
           <h2 className="form-title">Create a New Event</h2>
           <form className="form" onSubmit={handleSubmit}>
@@ -109,13 +114,13 @@ function Business_create() {
 
             <p className="form-label">Start of Your Event:</p>
             <DateTimePicker
-              className="date_style"
+              className="date_style datepicker-ccs"
               onChange={(newVal) => setEventStart(newVal)}
               value={eventStart}
             />
             <p className="form-label">End of Your Event:</p>
             <DateTimePicker
-              className="date_style"
+              className="date_style datepicker-ccs"
               renderNumbers="true"
               onChange={(newVal) => setEventEnd(newVal)}
               value={eventEnd}

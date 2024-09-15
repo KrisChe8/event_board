@@ -4,16 +4,35 @@
   margin: 40px auto;
   text-align: center;
 }
+.order-by-small-screen {
+  display: none;
+}
 .events-wrapper {
   display: flex;
   gap: 30px;
   margin-top: 40px;
   justify-content: center;
   flex-wrap: wrap;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+}
+.description-text-small-screen {
+  display: none;
+}
+.card-title-black {
+  color: #000;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
 }
 .event-card-wrapper {
   width: 450px;
-  height: 450px;
+  height: 460px;
 
   border-radius: 8px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
@@ -21,11 +40,43 @@
 }
 .card-img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: fill;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+.description-wrapper {
+  transition: all 0.3s ease-out;
+  display: inline block;
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  width: 100%;
+}
+.description-text {
+  background: rgba(27, 26, 26, 0.9);
+  transition: all 0.3s ease-out;
+  transform: translateX(-100%);
+  position: absolute;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.description-wrapper:hover .description-text {
+  transform: translateX(0);
+}
+.description-wrapper:hover .card-img {
+  transition: all 0.3s ease-out;
+  transform: scale(1.2, 1.2);
+}
+
 .card-title-link {
   text-decoration: none;
   color: #000;
@@ -56,8 +107,11 @@
 }
 .order-by {
   display: flex;
+  gap: 30px;
+  justify-content: center;
 }
-.order-by button {
+.order-by button,
+.order-by-small-screen button {
   padding: 4px 8px;
   background-color: #139c13;
   color: #fff;
@@ -65,18 +119,452 @@
   border-radius: 6px;
   margin-right: 10px;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 0.4s;
 }
-.orderby-title,
-.order-by {
-  margin-left: 80px;
+.order-by button:hover,
+.order-by-small-screen button:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+
 .orderby-title {
   margin-top: 40px;
   margin-bottom: 20px;
+  text-align: center;
+  margin-left: 0;
 }
 
 .description-card {
   padding-left: 20px;
   padding-right: 20px;
   font-style: italic;
+}
+
+.my-tickets-card-img {
+  width: 100%;
+  height: 200px;
+}
+.mytickets-card-title {
+  color: #000;
+  margin: 10px auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+.past-events-wrapper {
+  border-bottom: 2px dotted gray;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+.past-events-wrapper > .event-card-wrapper {
+  width: 400px;
+}
+.icons-img {
+  width: 15px;
+  margin-right: 10px;
+}
+.icons-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+/* MODAL WINDOW */
+.modal-window {
+  border-radius: 12px;
+  position: fixed;
+  /* top: -270px; */
+  top: 1vh;
+  left: 10%;
+  height: 90vh;
+  width: 80vw;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: #fff;
+  overflow-y: scroll;
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
+
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+}
+.modal-card-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.modal-img-wrapper {
+  width: 100%;
+  height: 45%;
+  position: relative;
+}
+.modal-card-img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgb(227, 12, 12);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 50%;
+}
+.modal-close:hover {
+  color: rgb(10, 233, 59);
+}
+.modal-card-title {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.modal-time-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+.modal-icons-wrapper {
+  display: flex;
+  gap: 10px;
+}
+.modal-icons-img {
+  width: 19px;
+}
+.modal-bold {
+  font-weight: 500;
+}
+.modal-other-details {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.modal-description {
+  padding: 10px 30px;
+}
+.modal-addto-calendar-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 40%;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #15d154;
+  border: 1px solid #15d154;
+  font-weight: 500;
+  transition: 0.6s;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.modal-addto-calendar-btn:hover {
+  background-color: #15d154;
+  color: #fff;
+  text-shadow: 0 0 15px #fff, 0 0 30px #49ff18,
+    4px -12px 4px rgba(154, 206, 76, 0);
+  box-shadow: rgba(240, 240, 220, 0.1) 0px 0px 16px;
+}
+.ms-icon {
+  display: none;
+}
+@media screen and (max-width: 1030px) {
+  .event-card-wrapper {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .event-card-wrapper {
+    width: 350px;
+    height: 410px;
+  }
+  .description-wrapper {
+    height: 200px;
+  }
+  .description-text {
+    font-size: 12px;
+  }
+  .card-title-black {
+    font-size: 17px;
+  }
+  .card-details {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .description-text-small-screen {
+    display: block;
+    margin-right: 12px;
+    margin-left: 12px;
+    height: 150px;
+    overflow: hidden;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .event-card-wrapper {
+    width: 350px;
+    height: 560px;
+  }
+  .modal-window {
+    top: 5vh;
+  }
+  .buscorp-event-card-wrapper {
+    height: 530px;
+  }
+  .description-text {
+    overflow: scroll;
+  }
+}
+@media screen and (max-width: 750px) {
+  .buscorp-event-card-wrapper {
+    height: 530px;
+    width: 300px;
+  }
+  .buscorp-description-wrapper {
+    height: 180px;
+  }
+  #bc-description-text-small-screen {
+    font-size: 14px;
+    height: 110px;
+    overflow: scroll;
+  }
+  .buscorp-event-card-wrapper {
+    height: 490px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .buscorp-event-card-wrapper {
+    height: 440px;
+    width: 65%;
+  }
+  #bc-description-text-small-screen {
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .description-text {
+    display: none;
+  }
+  .orderby-title {
+    text-align: center;
+    margin-left: 0;
+  }
+  .order-by button,
+  .order-by-small-screen button {
+    font-size: 14px;
+  }
+  .order-by {
+    margin-left: 0;
+    margin: 1px auto;
+    padding-bottom: 10px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  }
+  .event-card-wrapper {
+    height: auto;
+  }
+  .description-text-small-screen {
+    font-size: 13px;
+    max-height: 90px;
+    height: auto;
+  }
+  .modal-addto-calendar-btn {
+    left: 32%;
+  }
+}
+
+@media screen and (max-width: 495px) {
+  .bc-card-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .modal-img-wrapper {
+    height: 25%;
+  }
+  .modal-icons-wrapper {
+    gap: 6px;
+  }
+  .modal-icons-img {
+    width: 12px;
+  }
+  .modal-time-details {
+    flex-wrap: wrap;
+  }
+
+  .modal-card-wrapper {
+    overflow: scroll;
+  }
+  .modal-addto-calendar-btn {
+    position: fixed;
+    bottom: 50px;
+    left: 32%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .buscorp-event-card-wrapper {
+    width: 72%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .order-by {
+    display: none;
+  }
+  .order-by-small-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .order-by-small-screen button {
+    padding: 7px 7px;
+  }
+  .modal-time-details {
+    gap: 19px;
+  }
+  .modal-icons-img {
+    width: 17px;
+  }
+  /* hidding order by in acrdion */
+  .orderby-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ms-icon {
+    display: block;
+    background-color: #fff;
+    color: #000;
+  }
+  .modal-card-wrapper {
+    overflow: scroll;
+  }
+  .modal-description {
+    font-size: 13px;
+    padding-bottom: 63px;
+  }
+  .modal-addto-calendar-btn {
+    position: fixed;
+    bottom: 40px;
+    left: 31%;
+    font-size: 14px;
+  }
+  .modal-card-title {
+    font-size: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .modal-time-details,
+  .modal-other-details {
+    gap: 10px;
+    font-size: 13px;
+  }
+  .modal-icons-img {
+    width: 14px;
+  }
+  .bc-nav-btn {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .buscorp-event-card-wrapper {
+    width: 82%;
+  }
+  .buscorp-description-wrapper {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .orderby-title {
+    margin-top: 30px;
+    margin-bottom: 18px;
+    font-size: 13px;
+  }
+  .order-by {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .order-by button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .description-wrapper {
+    height: 150px;
+  }
+  .card-title-black {
+    font-size: 14px;
+  }
+  .description-text-small-screen {
+    font-size: 12px;
+    max-height: 97px;
+  }
+  .card-details {
+    font-size: 12px;
+  }
+  .icons-img {
+    width: 12px;
+    margin-right: 10px;
+  }
+  .addto-calendar-btn {
+    font-size: 13px;
+  }
+  .modal-window {
+    width: 88vw;
+    left: 6%;
+    height: 94vh;
+    top: 3%;
+  }
+  .modal-card-title {
+    font-size: 14px;
+    padding-left: 3px;
+    padding-right: 2px;
+  }
+  .modal-icons-img {
+    width: 13px;
+  }
+  .modal-time-details,
+  .modal-other-details {
+    font-size: 12px;
+    gap: 12px;
+  }
+  .modal-description {
+    font-size: 12px;
+    padding-bottom: 53px;
+  }
+  .modal-addto-calendar-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 26%;
+    font-size: 13px;
+  }
+  .modal-card-wrapper {
+    overflow: scroll;
+  }
 }

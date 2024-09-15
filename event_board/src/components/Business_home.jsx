@@ -5,34 +5,45 @@ import Business_corporate from "./Business_corporate";
 import Business_create from "./Business_create";
 import Business_myevents from "./Business_myevents";
 import Business_navbar from "./Business_navbar";
+import Error_page from "./Error";
 import Update_event from "./Update_event";
 
-function Business_home() {
+function Business_home({ username, useremail }) {
   const size_show = 16;
   // GET CURRENT USER
-  const active_user = "kris.dev.888@gmail.com";
+  const active_user = useremail;
   return (
     <>
-      <Business_navbar />
+      <Business_navbar username={username} />
       <div className="screen-wrapper">
-        <h1 className="app-title">
+        <h1 className="app-title " id="app-title-business">
           From Sharing to Participating - The Event Journey Begins Here!
         </h1>
-        {/* <Link to="/business"> Home Business</Link>
-        <Link to="/business/corporate"> Business Corporate</Link>
-        <Link to="/business/create"> Business Create</Link>
-        <Link to="/business/myevents"> Business My Events</Link> */}
-        {/* <Link to="/business/myevents/:id"> Update My Events</Link> */}
 
         <Routes>
-          <Route path="/" element={<Business_api_events size={size_show} />} />
-          <Route path="/corporate" element={<Business_corporate />} />
-          <Route path="/create" element={<Business_create />} />
+          <Route
+            path="/"
+            element={
+              <Business_api_events size={size_show} useremail={useremail} />
+            }
+          />
+          <Route
+            path="/corporate"
+            element={<Business_corporate useremail={useremail} />}
+          />
+          <Route
+            path="/create"
+            element={<Business_create useremail={useremail} />}
+          />
           <Route
             path="/myevents"
             element={<Business_myevents user={active_user} />}
           />
-          <Route path="/myevents/:id" element={<Update_event />} />
+          <Route
+            path="/myevents/:id"
+            element={<Update_event useremail={useremail} />}
+          />
+          <Route path="*" element={<Error_page />} />
         </Routes>
       </div>
     </>

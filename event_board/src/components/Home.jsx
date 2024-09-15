@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Business_api_events from "./Business_api_events";
 
-function Home() {
+function Home({ googleSignIn, googleSignInBusiness }) {
   const size_show = 10;
+
   return (
     <div className="screen-wrapper">
       <div className="main-header">
@@ -18,6 +19,7 @@ function Home() {
       <h1 className="home-title">
         Connecting People Through Events That Matter
       </h1>
+
       <div className="sign-form-wrapper">
         <div className="login-card">
           <img
@@ -31,8 +33,8 @@ function Home() {
           <p className="sign-in-description">
             Sign up now to host your event and make it the next big thing!
           </p>
-          <Link to="/business"> Business</Link>
-          <button className="sign-in">
+
+          <button onClick={() => googleSignInBusiness()} className="sign-in">
             <img className="g-icon" src="../../public/gmail.png" alt="" />
             Sign in with Google
           </button>
@@ -50,8 +52,13 @@ function Home() {
             Sign up today to discover events tailored to your passions and add
             them to your Google Calendar so you never miss out!!
           </p>
-          <Link to="/participant">Participant</Link>
-          <button className="sign-in">
+
+          <button
+            onClick={() => {
+              googleSignIn();
+            }}
+            className="sign-in"
+          >
             <img className="g-icon" src="../../public/gmail.png" alt="" />
             Sign in with Google
           </button>

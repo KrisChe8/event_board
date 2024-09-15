@@ -2,6 +2,10 @@
   width: 100%;
   margin-bottom: 4rem;
 }
+input,
+textarea {
+  outline: none;
+}
 .form-wrapper {
   width: 60%;
   height: auto;
@@ -41,6 +45,66 @@
   border-radius: 6px;
   color: #fff;
   font-weight: 500;
-  background-color: #15d154;
+  background-color: #139c13;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 0.4s;
+}
+.form-btn:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+@media screen and (max-width: 770px) {
+  .form-wrapper {
+    width: 76%;
+  }
+}
+@media screen and (max-width: 695px) {
+  #app-title-business {
+    font-size: 23px;
+  }
+  .form-input {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .form-title {
+    font-size: 1.4rem;
+  }
+  .form-wrapper {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .form-title {
+    margin-bottom: 6px;
+    font-size: 1.3rem;
+  }
+  .form-label {
+    font-size: 15px;
+  }
+  .form-wrapper {
+    width: 84%;
+    margin-top: 30px;
+  }
+  .form-input {
+    font-size: 13px;
+    line-height: 1.3rem;
+  }
+}
+@media screen and (max-width: 410px) {
+  .form-btn {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .datepicker-ccs {
+    font-size: 12px;
+  }
+  .form-btn {
+    width: 75%;
+    font-size: 13px;
+  }
 }

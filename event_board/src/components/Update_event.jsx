@@ -8,7 +8,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-function Update_event() {
+function Update_event({ useremail }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -21,8 +21,10 @@ function Update_event() {
   const [speakers, setSpeakers] = useState("");
   const [formError, setFormError] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   // TO BE CHANGED FOR LOGIN DETAILS
-  const createdBy = "kris.dev.888@gmail.com";
+  const createdBy = useremail;
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -80,6 +82,7 @@ function Update_event() {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchEvent = async () => {
       const { data, error } = await supabase
         .from("corporate_events")
@@ -89,8 +92,10 @@ function Update_event() {
 
       if (error) {
         navigate("/notfound", { replace: true });
+        setIsLoading(false);
       }
       if (data) {
+        setIsLoading(false);
         const num_price = parseInt(data.price);
 
         setEventName(data.event_name);
@@ -107,11 +112,11 @@ function Update_event() {
 
   return (
     <>
-      id = {id}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="screen-wrapper">
+          {isLoading ? <p className="isLoading">Loading...</p> : null}
           <div className="form-wrapper">
-            <h2 className="form-title">Create a New Event</h2>
+            <h2 className="form-title">Edit your Event</h2>
             <form className="form" onSubmit={handleUpdate}>
               <label className="form-label" htmlFor="title">
                 Title of your Event:
