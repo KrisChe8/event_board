@@ -1,5 +1,5 @@
 .participant-flex-wrap {
-  width: 74%;
+  width: 64%;
 
   justify-content: space-between;
 }
@@ -30,6 +30,21 @@
 .hamburger-participant {
   display: none;
   cursor: pointer;
+}
+@media screen and (max-width: 1170px) {
+  .participant-flex-wrap {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 910px) {
+  .menu-item-participant {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .participant-flex-wrap {
+    width: 76%;
+  }
 }
 
 @media screen and (max-width: 740px) {

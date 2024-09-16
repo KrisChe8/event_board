@@ -32,6 +32,7 @@
 .login-card {
   position: relative;
   width: 43%;
+  max-width: 430px;
   height: 450px;
   display: flex;
   flex-direction: column;

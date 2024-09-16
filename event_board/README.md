@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Events Platform** is a dynamic single-page application that allows businesses to share their events with the community, and lets community members sign up for events, participate, and add those events to their Google Calendar. The platform provides two user roles: business owners, who can create and manage events, and participants, who can explore and join events. This application is built with **React.js + Vite**, JavaScript, HTML, and CSS, and uses **Supabase** as the backend. User authentication is handled via **Google Authentication**.
+**Events Platform** is a dynamic single-page application that allows businesses to share their events with the community, and lets community members sign up for events, participate, and add those events to their Google Calendar. The platform provides two user roles: business owners, who can create and manage events, and participants, who can explore and join events. This application is built with **React.js + Vite**, JavaScript, AXIOS, HTML, and CSS, and uses **Supabase** as the backend. User authentication is handled via **Google Authentication**.
 
 ## Features
 
@@ -42,9 +42,11 @@ To run the **Events Platform**, ensure you have the following prerequisites inst
    cd event_board
    ```
 3. Install dependencies:
+
    ```bash
    npm install
    ```
+
 4. Create a .env file and add the necessary environment variables, including Supabase and GoogleAuth credentials.
 
 ## Usage
@@ -53,13 +55,19 @@ To start the frontend server, run:
 
 ```bash
 npm run dev
+```
 
 The server will start running at the specified port, typically localhost:3000.
 
 ## Deployed Version
 
-You can check out the deployed version of the platform here: Your Deployed Link.
+You can check out the deployed version of the platform here: [Event Board](https://event-board-psi.vercel.app/)
 
+### <u>To log in, please use the following email:</u>
+
+Test user email: "eventboard.test.user@gmail.com"
+<br/>
+Password: "test1234!"
 
 ## Responsiveness
 
@@ -72,12 +80,11 @@ Once authenticated, users can easily integrate events into their Google Calendar
 
 ## Tech Stack
 
-Frontend: React.js + Vite, JavaScript, HTML, CSS.
+Frontend: React.js + Vite, JavaScript, Axios, HTML, CSS.
 Backend: Supabase.
 Authentication: GoogleAuth.
 Calendar Integration: Google Calendar API.
 
 ## Known Limitations
 
-Only test users can authenticate via Google due to restrictions imposed by hosting on the free tier.
-```
+Only test users can authenticate via Google due to the app is not being submited for OAuth verification yet.

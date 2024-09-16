@@ -9,7 +9,7 @@ textarea {
 .form-wrapper {
   width: 60%;
   height: auto;
-
+  max-width: 700px;
   margin: 60px auto;
   padding: 20px;
   display: flex;
@@ -67,6 +67,11 @@ textarea {
   }
   .form-input {
     font-size: 15px;
+  }
+}
+@media screen and (max-width: 695px) {
+  .form-title {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 600px) {
