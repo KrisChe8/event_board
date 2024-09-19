@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./Checkout";
+import axios from "axios";
 
 const publisher_key = import.meta.env.VITE_PUBLISHER_KEY;
 
@@ -256,18 +257,12 @@ function Event_corporate_card({ event, user, session, token }) {
             Add to my Calendar
           </button>
         )}
-        <button
-          onClick={() => createCalendarEvent()}
-          className="addto-calendar-btn"
-        >
-          Add to my Calendar
-        </button>
       </div>
 
       {showCheckout ? (
         <>
           {clientSecretSettings.loading ? (
-            <h1>Loading ...</h1>
+            <h1 className="loading">Loading ...</h1>
           ) : (
             <div className="modal-window">
               <div className="modal-card-wrapper">

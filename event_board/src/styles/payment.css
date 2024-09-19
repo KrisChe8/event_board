@@ -1,3 +1,9 @@
+.loading {
+  position: fixed;
+  top: 3rem;
+  left: 45%;
+  z-index: 23;
+}
 .paymentform {
   background: lightblue;
   width: 90%;
