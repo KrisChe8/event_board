@@ -1,17 +1,74 @@
 import { Link } from "react-router-dom";
 import { sendDatatodb } from "../../supabase_req";
 import { useState } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "./Checkout";
+
+const publisher_key = import.meta.env.VITE_PUBLISHER_KEY;
+
+const stripePromise = loadStripe(publisher_key);
 
 function Event_corporate_card({ event, user, session, token }) {
   const [showModal, setShowModal] = useState(false);
 
+  // payment -------------
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [clientSecretSettings, setClientSecretSettings] = useState({
+    clientSecret: "",
+    loading: true,
+  });
+
   let price;
+  let priceInPence;
   if (event.price === 0) {
     price = "Free";
   } else {
+    priceInPence = Math.floor(event.price * 100);
     price = "£ " + event.price;
   }
 
+  let showBuy = false;
+  if (price === "Free") {
+    showBuy = false;
+  } else {
+    showBuy = true;
+  }
+
+  // Creating a Payment Intent
+
+  async function createPaymentIntent(data) {
+    console.log(data);
+
+    const response = await axios.post(
+      "https://stripe-gold.vercel.app/api/payments/intents",
+      { amount: data }
+    );
+    return response;
+    // response.status
+    // response.data.paymentIntent
+  }
+
+  const onCheckout = async () => {
+    setShowCheckout(true);
+    // 1/ create a payment intent
+    const response = await createPaymentIntent(priceInPence);
+    console.log(response);
+
+    if (response.error) {
+      alert("Something went wrong");
+      return;
+    }
+
+    setClientSecretSettings({
+      clientSecret: response.data.paymentIntent,
+      loading: false,
+    });
+
+    // 2. if payment Ok - add event to the Calendar
+  };
+
+  // ----------------------
   const arr_date = event.event_start.split("T");
   const date = arr_date[0].split("-");
 
@@ -187,6 +244,18 @@ function Event_corporate_card({ event, user, session, token }) {
           </p>
           <p className="card-price">Price: {price}</p>
         </div>
+        {showBuy ? (
+          <button onClick={() => onCheckout()} className="addto-calendar-btn">
+            Buy a Ticket
+          </button>
+        ) : (
+          <button
+            onClick={() => createCalendarEvent()}
+            className="addto-calendar-btn"
+          >
+            Add to my Calendar
+          </button>
+        )}
         <button
           onClick={() => createCalendarEvent()}
           className="addto-calendar-btn"
@@ -194,6 +263,36 @@ function Event_corporate_card({ event, user, session, token }) {
           Add to my Calendar
         </button>
       </div>
+
+      {showCheckout ? (
+        <>
+          {clientSecretSettings.loading ? (
+            <h1>Loading ...</h1>
+          ) : (
+            <div className="modal-window">
+              <div className="modal-card-wrapper">
+                <div className="modal-closebtn-wrapper">
+                  <button
+                    onClick={() => setShowCheckout(false)}
+                    className="modal-close-btn"
+                  >
+                    X
+                  </button>
+                </div>
+                <Elements
+                  stripe={stripePromise}
+                  options={{
+                    clientSecret: clientSecretSettings.clientSecret,
+                    appearance: { theme: "stripe" },
+                  }}
+                >
+                  <CheckoutForm className="payment-card" price={event.price} />
+                </Elements>
+              </div>
+            </div>
+          )}
+        </>
+      ) : null}
     </>
   );
 }

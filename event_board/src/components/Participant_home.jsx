@@ -5,6 +5,7 @@ import Error_page from "./Error";
 import Participant_events_manager from "./Participant_events_manager";
 import Participant_mytickets from "./Participant_mytickets";
 import Participant_navbar from "./Participant_navbar";
+import Success from "./Success";
 
 function Participant_home({ username, useremail, session, token }) {
   // GET FROM LOGED IN
@@ -31,6 +32,7 @@ function Participant_home({ username, useremail, session, token }) {
           path="/mytickets"
           element={<Participant_mytickets user={active_user} />}
         />
+        <Route path="/success" element={<Success />} />
         <Route path="*" element={<Error_page />} />
       </Routes>
     </div>

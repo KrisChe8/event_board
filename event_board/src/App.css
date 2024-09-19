@@ -6,6 +6,8 @@
 @import url("./styles//home.css");
 @import url("./styles/participant_navbar.css");
 @import url("./styles/mytickets.css");
+@import url("./styles/success.css");
+@import url("./styles/payment.css");
 
 * {
   margin: 0;

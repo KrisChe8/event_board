@@ -1,0 +1,11 @@
+.checked {
+  width: 100px;
+}
+.success-wrapper {
+  margin: 1rem auto;
+  margin-top: 1.7rem;
+  max-width: 90%;
+}
+.success-wrapper h3 {
+  max-width: 80%;
+}
