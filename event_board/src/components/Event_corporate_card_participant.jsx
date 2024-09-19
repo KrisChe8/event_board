@@ -67,6 +67,7 @@ function Event_corporate_card({ event, user, session, token }) {
     });
 
     // 2. if payment Ok - add event to the Calendar
+    createCalendarEvent();
   };
 
   // ----------------------

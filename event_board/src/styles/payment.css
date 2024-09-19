@@ -19,6 +19,16 @@
   margin-top: 30px;
   transition: 0.3s;
   border: none;
+  width: 30%;
+  height: 50px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #000;
+  border-radius: 8px;
+  cursor: pointer;
 }
 .paymentform button:hover {
   background: #139c13;
@@ -30,6 +40,7 @@
 .price-reminder {
   color: #000;
   margin-bottom: 30px;
+  text-align: center;
 }
 .checked {
   width: 100px;
