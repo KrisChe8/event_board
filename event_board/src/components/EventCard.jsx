@@ -29,7 +29,6 @@ function EventCard({ event, user, onDelete }) {
       console.log(error);
     }
     if (data) {
-      console.log(data);
       onDelete(event.id);
     }
   };

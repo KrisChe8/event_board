@@ -39,8 +39,6 @@ function Event_corporate_card({ event, user, session, token }) {
   // Creating a Payment Intent
 
   async function createPaymentIntent(data) {
-    console.log(data);
-
     const response = await axios.post(
       "https://stripe-gold.vercel.app/api/payments/intents",
       { amount: data }
@@ -54,7 +52,6 @@ function Event_corporate_card({ event, user, session, token }) {
     setShowCheckout(true);
     // 1/ create a payment intent
     const response = await createPaymentIntent(priceInPence);
-    console.log(response);
 
     if (response.error) {
       alert("Something went wrong");
@@ -67,7 +64,9 @@ function Event_corporate_card({ event, user, session, token }) {
     });
 
     // 2. if payment Ok - add event to the Calendar
-    createCalendarEvent();
+    if (response.data) {
+      createCalendarEvent();
+    }
   };
 
   // ----------------------
