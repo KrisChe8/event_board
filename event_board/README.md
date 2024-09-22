@@ -8,18 +8,24 @@
 
 - **Authentication**: Users can sign in via Google Authentication.
 - **Google Calendar Integration**: Participants can easily add events to their Google Calendar.
-- **Business Users**:
-  - Add and manage corporate events.
-  - View both corporate (internal) and foreign (external API) events.
-  - Create new events by filling out a form. All fields are required except the image URL, which defaults if not provided.
-  - Error handling for incomplete form submissions.
-  - Manage "My Events" by editing or deleting them.
-- **Community Members/Participants**:
-  - Browse corporate and foreign events.
-  - View detailed event cards by clicking on the event title.
-  - Add events to their Google Calendar with a single click.
-  - Sort events by last added, event date, or event name.
-  - Track events they've signed up for, with the option to hide past events or show attended ones.
+- **Stripe Payments**: Users can buy tickets.
+
+### Business Users:
+
+- Create and manage corporate events.
+- View both corporate (internal) and foreign (external API) events.
+- Create new events by filling out a form. All fields are required except the image URL, which defaults if not provided.
+- Error handling for incomplete form submissions.
+- Manage "My Events" by editing or deleting them.
+
+### Community Members/Participants:
+
+- Browse corporate and foreign events.
+- View detailed event cards by clicking on the event title.
+- Add events to their Google Calendar with a single click.
+- **Purchase tickets** for paid events using credit/debit cards via Stripe integration.
+- Sort events by last added, event date, or event name.
+- Track events they've signed up for, with the option to hide past events or show attended ones.
 
 ## Prerequisites
 
@@ -27,6 +33,7 @@ To run the **Events Platform**, ensure you have the following prerequisites inst
 
 - **React.js**: Version 16+
 - **Node.js**: Version 12+ (for npm)
+- **Stripe Account**: To handle payments during local testing.
 
 ## Installation
 
@@ -47,7 +54,24 @@ To run the **Events Platform**, ensure you have the following prerequisites inst
    npm install
    ```
 
-4. Create a .env file and add the necessary environment variables, including Supabase and GoogleAuth credentials.
+4. Create a .env file and add the necessary environment variables:
+
+- Supabase credentials
+- Google Authentication credentials
+- Stripe Publisher Key (for payment integration)
+
+To run the Stripe payment system locally, you'll need to create an account on Stripe and add your Stripe Publisher Key to the .env file.
+You also would need to clone backend folder for stripe payments.
+
+## Stripe Payment Integration
+
+The platform allows participants to purchase tickets for paid events using their credit/debit card via Stripe. The backend implementation for handling Stripe payments can be found here: [Stripe Payment Backend](https://github.com/KrisChe8/stripe_backend).
+
+To test payments locally, you'll need to:
+
+1. Create an account on Stripe.
+2. Add your Stripe Publisher Key in the .env file as described above.
+3. Clone backend repo and follow the instructions there.
 
 ## Usage
 
@@ -82,9 +106,10 @@ Once authenticated, users can easily integrate events into their Google Calendar
 
 Frontend: React.js + Vite, JavaScript, Axios, HTML, CSS.
 Backend: Supabase.
+Payment Integration: Stripe.
 Authentication: GoogleAuth.
 Calendar Integration: Google Calendar API.
 
 ## Known Limitations
 
-Only test users can authenticate via Google due to the app is not being submited for OAuth verification yet.
+Currently, only test users can authenticate via Google, as the app has not yet been submitted for OAuth verification. Additionally, to test payments locally, developers need to configure their own Stripe account and API keys.
