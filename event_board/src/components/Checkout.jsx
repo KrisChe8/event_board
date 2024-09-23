@@ -5,7 +5,7 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 
-function CheckoutForm({ price }) {
+function CheckoutForm({ price, createCalendarEvent }) {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
@@ -19,24 +19,28 @@ function CheckoutForm({ price }) {
       return;
     }
 
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: "https://event-board-psi.vercel.app/participant/success",
       },
     });
-    if (error) {
+    if (paymentIntent && paymentIntent.status === "succeeded") {
+      setErrorMessage(null);
+      createCalendarEvent();
+    } else if (error) {
       // This point will only be reached if there is an immediate error when
       // confirming the payment. Show error to your customer (for example, payment
       // details incomplete)
       setErrorMessage(error.message);
-    } else {
-      alert("Success");
-      setErrorMessage(null);
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
     }
+    // else {
+    //   alert("Success");
+    //   setErrorMessage(null);
+    // Your customer will be redirected to your `return_url`. For some payment
+    // methods like iDEAL, your customer will be redirected to an intermediate
+    // site first to authorize the payment, then redirected to the `return_url`.
+    // }
   };
   return (
     <>

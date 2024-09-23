@@ -64,9 +64,9 @@ function Event_corporate_card({ event, user, session, token }) {
     });
 
     // 2. if payment Ok - add event to the Calendar
-    if (response.data.paymentIntent) {
-      createCalendarEvent();
-    }
+    // if (response.data.paymentIntent) {
+    //   createCalendarEvent();
+    // }
   };
 
   // ----------------------
@@ -114,7 +114,7 @@ function Event_corporate_card({ event, user, session, token }) {
         return data.json();
       })
       .then((data) => {
-        alert("Event created");
+        alert("Event added to your Google Calendar successfully!");
       })
       .catch((error) => {
         console.log(error);
@@ -281,7 +281,11 @@ function Event_corporate_card({ event, user, session, token }) {
                     appearance: { theme: "stripe" },
                   }}
                 >
-                  <CheckoutForm className="payment-card" price={event.price} />
+                  <CheckoutForm
+                    className="payment-card"
+                    price={event.price}
+                    createCalendarEvent={createCalendarEvent}
+                  />
                 </Elements>
               </div>
             </div>
