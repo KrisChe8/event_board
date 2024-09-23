@@ -7,7 +7,7 @@ function Mytickets_card({ event, user }) {
   const dmy = date.reverse().join("-");
   const timeArr = event.time.split(":");
   const time = `${timeArr[0]}:${timeArr[1]}`;
-  console.log(event);
+
   return (
     <>
       {showModal ? (

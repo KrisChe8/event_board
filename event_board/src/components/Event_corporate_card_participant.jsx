@@ -75,7 +75,8 @@ function Event_corporate_card({ event, user, session, token }) {
 
   const dmy = date.reverse().join("-");
   const timearr = arr_date[1].split("+");
-  const timeL = timearr[0];
+  const timeLineArr = timearr[0].split(":");
+  const timeL = `${timeLineArr[0]}:${timeLineArr[1]}`;
 
   const dateforDb = arr_date[0];
 

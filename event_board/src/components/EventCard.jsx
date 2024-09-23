@@ -16,7 +16,8 @@ function EventCard({ event, user, onDelete }) {
   const date = arr_date[0].split("-");
   const dmy = date.reverse().join("-");
   const timearr = arr_date[1].split("+");
-  const time = timearr[0];
+  const timeLine = timearr[0].split(":");
+  const time = `${timeLine[0]}:${timeLine[1]}`;
 
   const handleDelete = async () => {
     const { data, error } = await supabase
