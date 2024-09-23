@@ -19,13 +19,13 @@ function CheckoutForm({ price, createCalendarEvent }) {
       return;
     }
 
-    const { error, paymentIntent } = await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: "https://event-board-psi.vercel.app/participant/success",
       },
     });
-    if (paymentIntent && paymentIntent.status === "succeeded") {
+    if (!error) {
       console.log("here");
       setErrorMessage(null);
       createCalendarEvent();
