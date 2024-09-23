@@ -31,7 +31,7 @@ function CheckoutForm({ price, createCalendarEvent }) {
     if (paymentIntent && paymentIntent.status === "succeeded") {
       setErrorMessage(null);
       createCalendarEvent();
-      navigate("https://event-board-psi.vercel.app/participant/success");
+      navigate("/participant/success", { replace: true });
     } else if (error) {
       // This point will only be reached if there is an immediate error when
       // confirming the payment. Show error to your customer (for example, payment
