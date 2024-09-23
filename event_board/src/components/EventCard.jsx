@@ -134,7 +134,8 @@ function EventCard({ event, user, onDelete }) {
         </p>
         <div className="card-details bc-card-details">
           <p className="card-date">
-            Date: {dmy} Time: {time}
+            <span className="bold-txt"> Date: </span> {dmy}{" "}
+            <span className="bold-txt"> Time: </span> {time}
           </p>
           <p className="card-price">Price: {price}</p>
         </div>
