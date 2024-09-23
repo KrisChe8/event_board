@@ -26,6 +26,7 @@ function CheckoutForm({ price, createCalendarEvent }) {
       },
     });
     if (paymentIntent && paymentIntent.status === "succeeded") {
+      console.log("here");
       setErrorMessage(null);
       createCalendarEvent();
     } else if (error) {
