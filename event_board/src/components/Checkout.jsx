@@ -24,6 +24,7 @@ function CheckoutForm({ price, createCalendarEvent }) {
       confirmParams: {
         // return_url: "https://event-board-psi.vercel.app/participant/success",
       },
+      redirect: "if_required",
     });
     if (paymentIntent && paymentIntent.status === "succeeded") {
       console.log("here");
