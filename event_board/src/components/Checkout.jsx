@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useStripe,
   useElements,
@@ -9,6 +10,7 @@ function CheckoutForm({ price, createCalendarEvent }) {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,22 +29,15 @@ function CheckoutForm({ price, createCalendarEvent }) {
       redirect: "if_required",
     });
     if (paymentIntent && paymentIntent.status === "succeeded") {
-      console.log("here");
       setErrorMessage(null);
       createCalendarEvent();
+      navigate("https://event-board-psi.vercel.app/participant/success");
     } else if (error) {
       // This point will only be reached if there is an immediate error when
       // confirming the payment. Show error to your customer (for example, payment
       // details incomplete)
       setErrorMessage(error.message);
     }
-    // else {
-    //   alert("Success");
-    //   setErrorMessage(null);
-    // Your customer will be redirected to your `return_url`. For some payment
-    // methods like iDEAL, your customer will be redirected to an intermediate
-    // site first to authorize the payment, then redirected to the `return_url`.
-    // }
   };
   return (
     <>

@@ -76,7 +76,7 @@ function Update_event({ useremail }) {
     }
     if (data) {
       setFormError(null);
-      console.log(data);
+
       navigate("/business/corporate");
     }
   };
