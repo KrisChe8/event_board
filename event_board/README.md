@@ -2,13 +2,15 @@
 
 ## Overview
 
-**Events Platform** is a dynamic single-page application that allows businesses to share their events with the community, and lets community members sign up for events, participate, and add those events to their Google Calendar. The platform provides two user roles: business owners, who can create and manage events, and participants, who can explore and join events. This application is built with **React.js + Vite**, JavaScript, AXIOS, HTML, and CSS, and uses **Supabase** as the backend. User authentication is handled via **Google Authentication**.
+**Events Platform** is a dynamic single-page application that allows businesses to share their events with the community, and lets community members sign up for events, participate, and add those events to their Google Calendar. The platform provides two user roles: business owners, who can create and manage events, and participants, who can explore and join events. This application is built with **React.js + Vite**, JavaScript, AXIOS, HTML, and CSS, and uses **Supabase** as the backend. User authentication is handled via **Google Authentication**, and the payment system is integrated with **Stripe** for secure ticket purchasing.
 
 ## Features
 
 - **Authentication**: Users can sign in via Google Authentication.
-- **Google Calendar Integration**: Participants can easily add events to their Google Calendar.
-- **Stripe Payments**: Users can buy tickets.
+- **Google Calendar Integration**:
+  - Business users can add their corporate events to Google Calendar (free of charge).
+  - Participants can add events to Google Calendar if the event is free or external. For paid corporate events, participants need to purchase a ticket to add the event to their calendar.
+- **Stripe Payments**: Participants can buy tickets.
 
 ### Business Users:
 
@@ -22,7 +24,7 @@
 
 - Browse corporate and foreign events.
 - View detailed event cards by clicking on the event title.
-- Add events to their Google Calendar with a single click.
+- Add events to their Google Calendar with a single click (for free or external events, or after purchasing tickets for paid corporate events).
 - **Purchase tickets** for paid events using credit/debit cards via Stripe integration.
 - Sort events by last added, event date, or event name.
 - Track events they've signed up for, with the option to hide past events or show attended ones.
@@ -34,6 +36,8 @@ To run the **Events Platform**, ensure you have the following prerequisites inst
 - **React.js**: Version 16+
 - **Node.js**: Version 12+ (for npm)
 - **Stripe Account**: To handle payments during local testing.
+- **Supabase credentials**: You will need to create an account in Supabase and set up a project. These credentials are necessary for the backend and user management features.
+- **Google Authentication credentials**: You need to set up Google OAuth credentials for handling user authentication via Google Sign-In. This can be done via [the Google Cloud Console](https://console.cloud.google.com).
 
 ## Installation
 
@@ -55,12 +59,30 @@ To run the **Events Platform**, ensure you have the following prerequisites inst
    ```
 
 4. Create a .env file and add the necessary environment variables:
+   To run the Events Platform locally, you will need to create a .env file in the root of the project and add the following environment variables:
 
-- Supabase credentials
-- Google Authentication credentials
-- Stripe Publisher Key (for payment integration)
+**Supabase Credentials:**
 
-To run the Stripe payment system locally, you'll need to create an account on Stripe and add your Stripe Publisher Key to the .env file.
+- VITE_SUPABASE_URL: The URL of your Supabase project.
+- VITE_ANON_KEY: The public anonymous key for your Supabase project.
+
+**Stripe Credentials:**
+
+- VITE_PUBLISHER_KEY: The Stripe publisher key used to process payments for event tickets.
+
+**Ticketmaster API:**
+
+- VITE_API_KEY: Your Ticketmaster API key from [Ticketmaster Developer Portal](https://developer-acct.ticketmaster.com) used for retrieving external events.
+
+Example .env file:
+
+```bash
+VITE_SUPABASE_URL=your-supabase-url
+VITE_ANON_KEY=your-anon-key
+VITE_PUBLISHER_KEY=your-stripe-publisher-key
+VITE_API_KEY=your-ticketmaster-api-key
+```
+
 You also would need to clone backend folder for stripe payments.
 
 ## Stripe Payment Integration
