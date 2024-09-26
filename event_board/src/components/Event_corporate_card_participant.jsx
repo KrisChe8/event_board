@@ -204,12 +204,21 @@ function Event_corporate_card({ event, user, session, token }) {
                 </div>
               </div>
               <p className="modal-description">{event.event_description}</p>
-              <button
-                onClick={() => createCalendarEvent()}
-                className="modal-addto-calendar-btn"
-              >
-                Add to my Calendar
-              </button>
+              {showBuy ? (
+                <button
+                  onClick={() => onCheckout()}
+                  className="addto-calendar-btn"
+                >
+                  Buy a Ticket
+                </button>
+              ) : (
+                <button
+                  onClick={() => createCalendarEvent()}
+                  className="addto-calendar-btn"
+                >
+                  Add to my Calendar
+                </button>
+              )}
             </div>
           </div>
         </>
